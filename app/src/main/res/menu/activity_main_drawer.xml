@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/kursy_walut"
+            android:icon="@android:drawable/ic_input_get"
+            android:typeface="serif"
+            android:title="@string/kursy_walut"/>
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/update"
+                android:icon="@android:drawable/ic_menu_send"
+                android:typeface="serif"
+                android:title="@string/zaktualizuj" />
+            <item
+                android:id="@+id/setings"
+                android:icon="@drawable/ic_menu_manage"
+                android:typeface="serif"
+                android:title="@string/action_settings" />
+            <item
+                android:id="@+id/aboutAplication"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:typeface="serif"
+                android:title="@string/o_mnie" />
+        </menu>
+    </item>
+
+</menu>
