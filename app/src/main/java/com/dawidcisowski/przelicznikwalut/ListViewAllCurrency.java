@@ -1,6 +1,5 @@
 package com.dawidcisowski.przelicznikwalut;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +13,9 @@ import java.util.List;
 public class ListViewAllCurrency extends AppCompatActivity {
 
     private ListView listView;
-    private ListViewAdapter listViewAdapter;
     private Cursor currencyCursor;
     private List<CurrencyDescription> currencyDescriptions;
     private BaseAdapter baseAdapter;
-    private Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +25,17 @@ public class ListViewAllCurrency extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listViewCurrency);
 
         fillListViewData();
-        // initListViewOnItemClick();
 
     }
 
     private void fillListViewData() {
         baseAdapter = new BaseAdapter(getApplicationContext());
         baseAdapter.open();
-        getAllTasks();
-        listViewAdapter = new ListViewAdapter(this, currencyDescriptions);
+        getAllCurrency();
+        ListViewAdapter listViewAdapter = new ListViewAdapter(this, currencyDescriptions);
         listView.setAdapter(listViewAdapter);
     }
-
-    private void getAllTasks() {
+    private void getAllCurrency() {
         currencyDescriptions = new ArrayList<CurrencyDescription>();
         currencyCursor = getAllEntriesFromDb();
         updateCurrencyList();
@@ -49,7 +44,6 @@ public class ListViewAllCurrency extends AppCompatActivity {
     private Cursor getAllEntriesFromDb() {
         currencyCursor = baseAdapter.getAllCurrency();
         if (currencyCursor != null) {
-            // this.startManagingCursor();
             currencyCursor.moveToFirst();
         }
         return currencyCursor;

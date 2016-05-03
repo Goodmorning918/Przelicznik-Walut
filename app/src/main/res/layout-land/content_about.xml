@@ -21,8 +21,7 @@
         android:text="@string/app_name"
         android:id="@+id/textView2"
         android:typeface="serif"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="60dp" />
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +38,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/version_value"
         android:id="@+id/textView4"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +54,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/dawidCisowski"
         android:id="@+id/textView6"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +70,7 @@
         android:text="@string/adresEmail"
         android:id="@+id/textView8"
         android:typeface="serif"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="7dp" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -5,14 +5,14 @@ public class CurrencyDescription {
     private String name;
     private int conversion;
     private String code;
-    private double AveragePrice;
+    private double averagePrice;
     public CurrencyDescription(long id, String name, int conversion,
-                                String code, double AveragePrice) {
+                                String code, double averagePrice) {
         this.id = id;
         this.name = name;
         this.conversion = conversion;
         this.code = code;
-        this.AveragePrice = AveragePrice;
+        this.averagePrice = averagePrice;
     }
 
 
@@ -28,9 +28,7 @@ public class CurrencyDescription {
     public void setName(String name) {
         this.name = name;
     }
-    public int getConversion() {
-        return conversion;
-    }
+    public int getConversion() {return conversion;}
     public void setConversion(int conversion) {
         this.conversion = conversion;
     }
@@ -41,10 +39,10 @@ public class CurrencyDescription {
         this.code = code;
     }
     public double getAveragePrice() {
-        return AveragePrice;
+        return averagePrice;
     }
     public void setAveragePrice(float AveragePrice) {
-        this.AveragePrice = AveragePrice;
+        this.averagePrice = averagePrice;
     }
 }
 

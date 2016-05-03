@@ -5,7 +5,9 @@ import android.util.Log;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public  class Count {
+//klasa do przelicznia kursu
+
+class Count {
 
     public static String convert(double rate_in,double rate_out,double value)
     {
@@ -13,13 +15,13 @@ public  class Count {
         try {
             x = rate_in*value/rate_out;
         } catch (Exception e) {
-
+            Log.d("Convert","faault in convert");
         }
-        NumberFormat format=new DecimalFormat("#.##");
-        String text=format.format(x);
 
-        Log.d("dad",text);
-        return text;
+        //przybliżanie wyniku do 2 miejsc po przecinku
+        NumberFormat format=new DecimalFormat("#.##");
+
+        return format.format(x);
     }
 
 

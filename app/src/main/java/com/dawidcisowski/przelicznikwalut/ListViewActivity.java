@@ -15,10 +15,10 @@ import com.dawidcisowski.przelicznikwalut.R;
 import java.util.ArrayList;
 import java.util.List;
 
+//klasa aktywności z walutami do wyboru
 public class ListViewActivity extends AppCompatActivity {
 
     private ListView listView;
-    private ListViewAdapter listViewAdapter;
     private Cursor currencyCursor;
     private List<CurrencyDescription> currencyDescriptions;
     private BaseAdapter baseAdapter;
@@ -32,15 +32,12 @@ public class ListViewActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listViewCurrency);
 
         fillListViewData();
-        // initListViewOnItemClick();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 position++;
                 intent.putExtra("position", position);
-                //getApplicationContext().get
                 setResult(2, intent);
-                Log.d("Wiersz", Integer.toString(position));
                 finish();//finishing activity
 
             }
@@ -51,7 +48,7 @@ public class ListViewActivity extends AppCompatActivity {
         baseAdapter = new BaseAdapter(getApplicationContext());
         baseAdapter.open();
         getAllTasks();
-        listViewAdapter = new ListViewAdapter(this, currencyDescriptions);
+        ListViewAdapter listViewAdapter = new ListViewAdapter(this, currencyDescriptions);
         listView.setAdapter(listViewAdapter);
     }
 
@@ -64,7 +61,6 @@ public class ListViewActivity extends AppCompatActivity {
     private Cursor getAllEntriesFromDb() {
         currencyCursor = baseAdapter.getAllCurrency();
         if (currencyCursor != null) {
-            // this.startManagingCursor();
             currencyCursor.moveToFirst();
         }
         return currencyCursor;

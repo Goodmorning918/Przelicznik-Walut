@@ -9,7 +9,7 @@
     <string name="button">Count</string>
     <string name="przelicznik">Przelicznik</string>
     <string name="zaktualizuj">Update Now</string>
-    <string name="o_mnie">About Aplication</string>
+    <string name="o_mnie">About Application</string>
     <string name="action_settings">Setings</string>
     <string name="kursy_walut">Exchanges Rate</string>
     <string name="title_activity_settings">Settings</string>
@@ -83,5 +83,6 @@
     <string name="nbpPage">www.nbp.pl</string>
     <string name="choseCurrency">Select Currency</string>
     <string name="allCurrency">All Currency</string>
+    <string name="version_value">1.1</string>
 
 </resources>

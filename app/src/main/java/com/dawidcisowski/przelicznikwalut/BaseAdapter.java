@@ -110,7 +110,7 @@ public class BaseAdapter  {
         newCurrencyValues.put(KEY_NAME, position.name);
         newCurrencyValues.put(KEY_CONVERSION, Integer.parseInt(position.conversion));
         newCurrencyValues.put(KEY_CODE, position.code);
-        newCurrencyValues.put(KEY_AVERAGE_PRICE,  Double.parseDouble(position.AveragePrice.replace(',', '.')));
+        newCurrencyValues.put(KEY_AVERAGE_PRICE,  Double.parseDouble(position.averagePrice.replace(',', '.')));
         return db.insert(DB_CURRENCY_TABLE, null, newCurrencyValues);
     }
 
@@ -165,6 +165,7 @@ public class BaseAdapter  {
             String code=cursor.getString(CODE_COLUMN);
             double averagePrice=cursor.getFloat(AVERAGE_PRICE__COLUMN);
             currency=new CurrencyDescription(id, name, conversion, code, averagePrice);
+            cursor.close();
         }
         return currency;
     }
@@ -172,12 +173,8 @@ public class BaseAdapter  {
         Cursor cursor=db.rawQuery("SELECT count(*) FROM "+table,null);
         cursor.moveToFirst();
         int count=cursor.getInt(0);
-        Log.d("Liczba ",Integer.toString(count));
-        if(count>0){
-            return false;
-        }else{
-            return true;
-        }
+        cursor.close();
+        return count <= 0;
     }
     public long versionBase(){
         return db.getVersion();
@@ -186,3 +183,6 @@ public class BaseAdapter  {
 
 
 }
+
+
+

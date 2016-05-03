@@ -35,20 +35,11 @@ class Update extends AsyncTask<Void, Void, Void>{
        try {
           saveToDatabase.initial();
           saveToDatabase.check();
-          //saveToDatabase.parseToCurrencyDescriptions();
           saveToDatabase.update();
-          saveToDatabase.showCurrency();
-
           saveToDatabase.close();
 
-
-       } catch (XmlPullParserException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
            ifUpdate=false;
-            e.printStackTrace();
         }
         finally {
            saveToDatabase.close();

@@ -1,7 +1,6 @@
 package com.dawidcisowski.przelicznikwalut;
 
-import android.app.ActionBar;
-import android.app.Fragment;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -23,8 +23,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.dawidcisowski.przelicznikwalut.R.string.navigation_drawer_open;
 
-public class MainActivity extends AppCompatActivity  {
+
+public class MainActivity extends AppCompatActivity
+    implements NavigationView.OnNavigationItemSelectedListener{
 
     private Intent intentListView;
 
@@ -37,90 +40,37 @@ public class MainActivity extends AppCompatActivity  {
     private Button codeOutput;
     private TextView valueOutput;
 
-    private ImageButton buttonRevert;
-
     private int inputOutput=0;
 
     private BaseAdapter baseAdapter;
 
-    private CurrencyDescription currencyDescriptionInpout;
-    private CurrencyDescription currencyDescriptionOutput;
-
-    private double averagePriceInput;
-    private double averagePriceOutput;
-
-    private int conversionInput;
-    private int conversionOutput;
-
     private int positionInput;
     private int positionOutput;
 
-    private boolean update;
-    private String color;
-
     private boolean isUpdated=false;
-
-    SharedPreferences sharedPreference;
-
-    private DrawerLayout mDrawer;
-   // private Toolbar toolbar;
-    NavigationView nvDrawer;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //sprawdzenie czy aplikacja czy został obrócony ekran
         if(savedInstanceState!=null){
             isUpdated=true;
         }
 
-
         Init();
-       // double x=Double.MAX;
-        //Log.d("Ada",Double.toString(x));
+
     }
-    private void setupDrawerContent(NavigationView navigationView){
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.kursy_walut: {
-                        Intent intent = new Intent(getApplicationContext(), ListViewAllCurrency.class);
-                        startActivity(intent);
-                        break;
 
-                    }
-                    case R.id.update: {
-                        updateTask();
-                        // Toast.makeText(getApplicationContext(), R.string.toastUpdate, Toast.LENGTH_SHORT).show();
-                        break;
-
-                    }
-                    case R.id.setings: {
-                        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-                        startActivity(intent);
-                        break;
-                    }
-                    case R.id.aboutAplication: {
-                        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
-                        startActivity(intent);
-                        break;
-                    }
-
-                }
-                  //YselectDrawerItem(menuItem);
-                return true;
-            }
-        });
-    }
     private void updateTask(){
         new Update(this).execute();
 
     }
+    //metoda do obsługi przeliczania walut
     private void exchange(){
-        boolean execute=false;
+     //   boolean execute=false;
         String value="0";
         double editTextValue;
         CurrencyDescription currencyDescriptionInput=baseAdapter.getCurrency(positionInput);
@@ -129,13 +79,15 @@ public class MainActivity extends AppCompatActivity  {
 
 
         String text=(valueInput.getText().toString());
+
         try{
             editTextValue=Double.parseDouble(text);
         }catch (Exception e){
             editTextValue=0.000;
 
         }
-        double x= 0;
+
+        double x;
         try {
             x = currencyDescriptionInput.getAveragePrice()/currencyDescriptionInput.getConversion();
         } catch (Exception e) {
@@ -147,7 +99,6 @@ public class MainActivity extends AppCompatActivity  {
         } catch (Exception e) {
             x=0;
         }
-        double w;
         if (x!=0&&y!=0&&editTextValue!=0) {
             try {
                 value=Count.convert(x, y, editTextValue);
@@ -155,10 +106,6 @@ public class MainActivity extends AppCompatActivity  {
                 Toast.makeText(getApplicationContext(),"Błąd",Toast.LENGTH_SHORT).show();
             }
         }
-        /*Log.d("prelicznie", Double.toString(currencyDescriptionInput.getAveragePrice()));
-        Log.d("prelicznie", Double.toString(currencyDescriptionOutput.getAveragePrice()));
-        Log.d("przelicznie", Double.toString(editTextValue));
-        Log.d("przelicznie", value);*/
         valueOutput.setText(value);
     }
 
@@ -168,51 +115,38 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void Init(){
+        SharedPreferences sharedPreference;
+
         nameInput=(TextView) findViewById(R.id.nameInput);
         codeInput=(Button) findViewById(R.id.codeInput);
         valueInput=(EditText) findViewById(R.id.valueInput);
         nameOutput=(TextView) findViewById(R.id.nameOutput);
         codeOutput=(Button) findViewById(R.id.codeOutput);
         valueOutput=(TextView) findViewById(R.id.textViewOutput);
-        buttonRevert=(ImageButton) findViewById(R.id.buttonRevert);
+        ImageButton buttonRevert = (ImageButton) findViewById(R.id.buttonRevert);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.canShowOverflowMenu();
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        //  toolbar.setNavigationIcon(R.mipmap.);
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-        mDrawer= (DrawerLayout) findViewById(R.id.drawer_layout);
-        nvDrawer=(NavigationView) findViewById(R.id.nav_view);
-       // setupDrawerContent(nvDrawer);
+        DrawerLayout mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawer, toolbar, navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+
+        NavigationView nvDrawer = (NavigationView) findViewById(R.id.nav_view);
+        nvDrawer.setNavigationItemSelectedListener(this);
 
         sharedPreference= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-        color=sharedPreference.getString("color_list", "1");
+        boolean update = sharedPreference.getBoolean("sync_switch", true);
 
-       /* switch(color){
-            case "0":{
-                //getApplicationContext().get
-                setTheme(R.style.RedAppTheme);
-                //recreate();
-            }case "1":{
-                setTheme(R.style.GreenAppTheme);
-            }case "2":{
-                setTheme(R.style.BlueAppTheme);
-            }
-        }*/
-
-        update=sharedPreference.getBoolean("sync_switch",true);
-
-
-        if(update&&!isUpdated){
+        //sprawdzenie czy w ustawieniach jest włączone automatyczne aktualizowanie
+        //i czy już nie była aktualizowana baza przy obecynym włączeniu
+        if(update &&!isUpdated){
             updateTask();
             isUpdated=true;
- //           Toast.makeText(getApplicationContext(),R.string.toastUpdate,Toast.LENGTH_SHORT).show();
         }
 
 
@@ -241,12 +175,13 @@ public class MainActivity extends AppCompatActivity  {
         });
 
         baseAdapter=new BaseAdapter(getApplicationContext());
-        baseAdapter=new BaseAdapter(getApplicationContext());
         baseAdapter.open();
-        positionInput=2;
-        positionOutput=36;
+        positionInput=2; //pozycja dolara, domyślna
+        positionOutput=36;//pozycja złotówki,domyślna
         setInput(2);
         setOutput(36);
+
+        //lisstenery do obsługi wyboru waluty
 
         codeInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -269,11 +204,10 @@ public class MainActivity extends AppCompatActivity  {
         intentListView= new Intent(this,ListViewActivity.class);
 
 
-       //setInput();
     }
 
     private  void change() {
-        int change=0;
+        int change;
         change=positionInput;
         positionInput=positionOutput;
         positionOutput=change;
@@ -284,15 +218,10 @@ public class MainActivity extends AppCompatActivity  {
         CurrencyDescription currencyDescription;
         currencyDescription=baseAdapter.getCurrency(id);
 
-        if (currencyDescription!=null){
+        if (currencyDescription!=null) {
             nameInput.setText(currencyDescription.getName());
             codeInput.setText((currencyDescription.getCode()));
-            averagePriceInput = currencyDescription.getAveragePrice();
-            conversionInput = currencyDescription.getConversion();
             positionInput = id;
-
-        }else{
-            conversionInput =1;
         }
         exchange();
 
@@ -304,20 +233,11 @@ public class MainActivity extends AppCompatActivity  {
         if (currencyDescription!=null) {
             nameOutput.setText(currencyDescription.getName());
             codeOutput.setText((currencyDescription.getCode()));
-            averagePriceOutput = currencyDescription.getAveragePrice();
-            conversionOutput = currencyDescription.getConversion();
             positionOutput = id;
-        }else {
-            conversionOutput = 1;
         }
         exchange();
 
 
-/*        codeOutput.setText((currencyDescription.getCode()));
-        averagePriceOutput=currencyDescription.getAveragePrice();
-        conversionOutput=currencyDescription.getConversion();
-        positionOutput=id;
-        exchange();*/
 
     }
 
@@ -327,7 +247,6 @@ public class MainActivity extends AppCompatActivity  {
         int position;
         try {
             position = data.getIntExtra("position", 2);
-            Log.d("powrot", Integer.toString(position));
             if (requestCode == 2 && inputOutput == 1) {
                 setInput(position);
                 inputOutput = 0;
@@ -337,43 +256,55 @@ public class MainActivity extends AppCompatActivity  {
                 inputOutput = 0;
             }
         }catch (Exception e){
-
+            Log.d("returning data","fault returning data");
         }
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item){
+        int id=item.getItemId();
+
+        if(id==R.id.update){
+            updateTask();
+        }else if(id==R.id.setings){
+            Intent intent=new Intent(this,SettingsActivity.class);
+            startActivity(intent);
+        }else if(id==R.id.aboutAplication){
+            Intent intent=new Intent(this,AboutActivity.class);
+            startActivity(intent);
+        }
+        DrawerLayout drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return  true;
+
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        DrawerLayout drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+            super.onBackPressed();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-
-
-    public void selectDrawerItem( MenuItem menuItem){
-        Fragment fragment=null;
-        Class fragmentClass;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (item.getItemId()){
             case  (R.id.action_settings): {
                 Intent intent=new Intent(this,SettingsActivity.class);
                 startActivity(intent);
                 return true;
 
-            }case (R.id.home):{
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
             }
         }
 

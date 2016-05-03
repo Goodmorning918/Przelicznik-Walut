@@ -83,4 +83,5 @@
     <string name="nbpPage">www.nbp.pl</string>
     <string name="choseCurrency">Wybór Waluty</string>
     <string name="allCurrency">Wszystkie Waluty</string>
+    <string name="version_value">1.1</string>
 </resources>
