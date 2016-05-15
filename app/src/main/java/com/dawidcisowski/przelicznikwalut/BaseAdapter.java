@@ -12,7 +12,7 @@ import android.util.Log;
 public class BaseAdapter  {
 
 
-    private static final String DEBUG_TAG ="BaseMenager";
+    private static final String DEBUG_TAG ="BaMenager";
 
     private static final int DB_VERSION =1;
     private static final String DB_NAME ="database.db";

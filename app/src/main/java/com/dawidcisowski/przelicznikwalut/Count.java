@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 
 //klasa do przelicznia kursu
 
-class Count {
+public class Count {
 
     public static String convert(double rate_in,double rate_out,double value)
     {
@@ -15,7 +15,7 @@ class Count {
         try {
             x = rate_in*value/rate_out;
         } catch (Exception e) {
-            Log.d("Convert","faault in convert");
+            Log.d("Convert","fault in convert");
         }
 
         //przybliżanie wyniku do 2 miejsc po przecinku

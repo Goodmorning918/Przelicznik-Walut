@@ -267,7 +267,10 @@ public class MainActivity extends AppCompatActivity
 
         if(id==R.id.update){
             updateTask();
-        }else if(id==R.id.setings){
+        }else if(id==R.id.kursy_walut){
+            Intent intent=new Intent(this,ListViewAllCurrency.class);
+            startActivity(intent);
+        } else if(id==R.id.setings){
             Intent intent=new Intent(this,SettingsActivity.class);
             startActivity(intent);
         }else if(id==R.id.aboutAplication){
