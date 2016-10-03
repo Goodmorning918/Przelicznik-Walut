@@ -15,7 +15,7 @@ public class ListViewAllCurrency extends AppCompatActivity {
     private ListView listView;
     private Cursor currencyCursor;
     private List<CurrencyDescription> currencyDescriptions;
-    private BaseAdapter baseAdapter;
+    private DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,8 @@ public class ListViewAllCurrency extends AppCompatActivity {
     }
 
     private void fillListViewData() {
-        baseAdapter = new BaseAdapter(getApplicationContext());
-        baseAdapter.open();
+        dbHelper = new DbHelper(getApplicationContext());
+        dbHelper.openDataBase();
         getAllCurrency();
         ListViewAdapter listViewAdapter = new ListViewAdapter(this, currencyDescriptions);
         listView.setAdapter(listViewAdapter);
@@ -42,7 +42,7 @@ public class ListViewAllCurrency extends AppCompatActivity {
     }
 
     private Cursor getAllEntriesFromDb() {
-        currencyCursor = baseAdapter.getAllCurrency();
+        currencyCursor = dbHelper.getAllCurrency();
         if (currencyCursor != null) {
             currencyCursor.moveToFirst();
         }
@@ -52,20 +52,20 @@ public class ListViewAllCurrency extends AppCompatActivity {
     private void updateCurrencyList() {
         if (currencyCursor != null && currencyCursor.moveToFirst()) {
             do {
-                long id = currencyCursor.getLong(baseAdapter.ID_COLUMN);
-                String name = currencyCursor.getString(baseAdapter.NAME_COLUMN);
-                int conversion = currencyCursor.getInt(baseAdapter.CONVERSION_COLUMN);
-                String code = currencyCursor.getString(baseAdapter.CODE_COLUMN);
-                double averagePrice = currencyCursor.getDouble(baseAdapter.AVERAGE_PRICE__COLUMN);
-                currencyDescriptions.add(new CurrencyDescription(id, name, conversion, code, averagePrice));
+                String name = currencyCursor.getString(0);
+                String code = currencyCursor.getString(1);
+                String country = currencyCursor.getString(2);
+                Double rate = 1/currencyCursor.getDouble(3);
+                rate=Double.parseDouble(Count.round(rate,"##.###"));
+                currencyDescriptions.add(new CurrencyDescription(name,code,country,rate));
             } while ((currencyCursor.moveToNext()));
         }
     }
 
     @Override
     protected void onDestroy() {
-        if (baseAdapter != null) {
-            baseAdapter.close();
+        if (dbHelper != null) {
+            dbHelper.close();
         }
         super.onDestroy();
     }

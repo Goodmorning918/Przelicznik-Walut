@@ -84,12 +84,7 @@ public class NbpParser {
         return new Position(name,conversion, code, averagePrice);
     }
 
-  /*  private String readName(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, null, "nazwa_waluty");
-        String name = readText(parser);
-        parser.require(XmlPullParser.END_TAG, null, "nazwa_waluty");
-        return name;
-    }*/
+
     private String readData(XmlPullParser parser,String tag) throws IOException, XmlPullParserException {
         parser.require(XmlPullParser.START_TAG, null,tag);
         String name = readText(parser);
@@ -97,27 +92,7 @@ public class NbpParser {
         return name;
     }
 
-   /* private String readConversion(XmlPullParser parser) throws IOException,XmlPullParserException{
-        parser.require(XmlPullParser.START_TAG, null, "przelicznik");
-        String conversion =readText(parser);
-        parser.require(XmlPullParser.END_TAG,null, "przelicznik");
-        return conversion;
-    }
 
-    private String readCode(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, null, "kod_waluty");
-        String code = readText(parser);
-        parser.require(XmlPullParser.END_TAG, null, "kod_waluty");
-        return code;
-    }
-
-    private String readAveragePrice(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, null, "kurs_sredni");
-        String AveragePrice = readText(parser);
-        parser.require(XmlPullParser.END_TAG, null, "kurs_sredni");
-        return AveragePrice;
-    }
-*/
     private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
         String result = "";
         if (parser.next() == XmlPullParser.TEXT) {

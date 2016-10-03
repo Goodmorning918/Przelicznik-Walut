@@ -1829,7 +1829,7 @@
 <XPD:REF name="BehavioralFeature">58brgKG/VUWWagId5BPDewAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Parameters[5]" type="UMLParameter" guid="WlKdFJTIMEWqyfryN1Un9AAA">
-<XPD:ATTR name="Name" type="string">averagePrice</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">rate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">double</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">58brgKG/VUWWagId5BPDewAA</XPD:REF>
 </XPD:OBJ>
@@ -2137,7 +2137,7 @@
 <XPD:REF name="Owner">UnIUjXof7ECWexJqLKBmsAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="3lo9rQCmh0upw6NhtO2qWAAA">
-<XPD:ATTR name="Name" type="string">averagePrice</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">rate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">UnIUjXof7ECWexJqLKBmsAAA</XPD:REF>
 </XPD:OBJ>
@@ -2246,7 +2246,7 @@
 <XPD:REF name="Owner">i8sFNggNL0W7aYjgy1KtkAAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="W1L+wMtTYkqUx9TBUBf2XAAA">
-<XPD:ATTR name="Name" type="string">averagePrice</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">rate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">double</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">ktrHzmBry0qpV9TPW2g4CAAA</XPD:REF>
 </XPD:OBJ>
@@ -2286,7 +2286,7 @@
 <XPD:REF name="Owner">i8sFNggNL0W7aYjgy1KtkAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="SX6UjAfZC0uZ6pi59j9DmwAA">
-<XPD:ATTR name="Name" type="string">averagePrice</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">rate</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">double</XPD:ATTR>
 <XPD:REF name="Owner">i8sFNggNL0W7aYjgy1KtkAAA</XPD:REF>
@@ -2678,7 +2678,7 @@
 <XPD:REF name="Owner">E38wHkDbikKPj1bMUmwwBAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="iPGsWXxVNkeRo5/H6IjlQwAA">
-<XPD:ATTR name="Name" type="string">averagePrice</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">rate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">TextView</XPD:ATTR>
 <XPD:REF name="Owner">E38wHkDbikKPj1bMUmwwBAAA</XPD:REF>
 </XPD:OBJ>

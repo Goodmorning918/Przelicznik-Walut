@@ -2,33 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="dtg"
+        android:text="PLN"
         android:id="@+id/code"
         android:typeface="serif"
-        android:padding="5dp" />
+        android:padding="2dp"
+        android:gravity="center_vertical" />
 
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="eger"
-        android:typeface="serif"
-        android:id="@+id/name"
-        android:padding="5dp" />
-
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Złoty"
+            android:typeface="serif"
+            android:id="@+id/name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Polska"
+            android:typeface="serif"
+            android:id="@+id/country"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
         android:typeface="serif"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="gggg"
-        android:id="@+id/averagePrice"
+        android:text="1.00"
+        android:id="@+id/rate"
         android:gravity="end" />
 
 </LinearLayout>

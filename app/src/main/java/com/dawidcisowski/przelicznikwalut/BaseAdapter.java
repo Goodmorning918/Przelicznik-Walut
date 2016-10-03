@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class BaseAdapter  {
+public class BaseAdapter  {/*
 
 
     private static final String DEBUG_TAG ="BaMenager";
@@ -34,7 +34,7 @@ public class BaseAdapter  {
     public static final String CODE_OPTIONS ="TEXT NOT NULL";
     public static final int CODE_COLUMN =3;
 
-    public static final String 	KEY_AVERAGE_PRICE="averagePrice";
+    public static final String 	KEY_AVERAGE_PRICE="rate";
     public static final String AVERAGE_PRICE_OPTIONS ="REAL DEFAULT 0";
     public static final int AVERAGE_PRICE__COLUMN =4;
 
@@ -97,7 +97,7 @@ public class BaseAdapter  {
         dbHelper.close();
     }
 
-    public long insertCurrency(String name, int conversion, String code, double avaragePrice ){
+    /*public long insertCurrency(String name, int conversion, String code, double avaragePrice ){
         ContentValues newCurrencyValues = new ContentValues();
         newCurrencyValues.put(KEY_NAME, name);
         newCurrencyValues.put(KEY_CONVERSION, conversion);
@@ -105,21 +105,21 @@ public class BaseAdapter  {
         newCurrencyValues.put(KEY_AVERAGE_PRICE, avaragePrice);
         return db.insert(DB_CURRENCY_TABLE, null, newCurrencyValues);
     }
-    public long insertCurrency(NbpParser.Position position){
+    public long insertCurrency(JsonParser.Position position){
         ContentValues newCurrencyValues = new ContentValues();
         newCurrencyValues.put(KEY_NAME, position.name);
         newCurrencyValues.put(KEY_CONVERSION, Integer.parseInt(position.conversion));
         newCurrencyValues.put(KEY_CODE, position.code);
-        newCurrencyValues.put(KEY_AVERAGE_PRICE,  Double.parseDouble(position.averagePrice.replace(',', '.')));
+        newCurrencyValues.put(KEY_AVERAGE_PRICE,  Double.parseDouble(position.rate.replace(',', '.')));
         return db.insert(DB_CURRENCY_TABLE, null, newCurrencyValues);
-    }
+    }*/
 
-    public boolean updateCurrency(CurrencyDescription cuarrencyDesctiption){
+  /*  public boolean updateCurrency(CurrencyDescription cuarrencyDesctiption){
         long id=cuarrencyDesctiption.getId();
         String name=cuarrencyDesctiption.getName();
         int conversion=cuarrencyDesctiption.getConversion();
         String code=cuarrencyDesctiption.getCode();
-        double AveragePrice=cuarrencyDesctiption.getAveragePrice();
+        double AveragePrice=cuarrencyDesctiption.getRate();
 
         return updateCurrency(id,name,conversion,code,AveragePrice);
     }
@@ -180,7 +180,7 @@ public class BaseAdapter  {
         return db.getVersion();
     }
 
-
+*/
 
 }
 

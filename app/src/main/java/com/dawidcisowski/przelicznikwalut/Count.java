@@ -5,25 +5,31 @@ import android.util.Log;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-//klasa do przelicznia kursu
+//klasa do przeliczeń
 
 public class Count {
 
-    public static String convert(double rate_in,double rate_out,double value)
+    public static String convert(Double rate_in,Double rate_out,Double value)
     {
-        double x= 0;
+        Double x= 0.00;
         try {
             x = rate_in*value/rate_out;
         } catch (Exception e) {
             Log.d("Convert","fault in convert");
         }
 
-        //przybliżanie wyniku do 2 miejsc po przecinku
-        NumberFormat format=new DecimalFormat("#.##");
 
-        return format.format(x);
+        return round(x,"##.##");
+    }
+
+    //przybliżanie wyniku
+    public static String round(Double number, String pattern){
+        NumberFormat format=new DecimalFormat(pattern);
+
+        return format.format(number).replace(',','.');
     }
 
 
 }
+
 

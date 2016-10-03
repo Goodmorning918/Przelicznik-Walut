@@ -32,20 +32,21 @@ public class MainActivity extends AppCompatActivity
     private Intent intentListView;
 
     private TextView nameInput;
-    private Button codeInput;
+    private Button codeInputButton;
     private EditText valueInput;
 
 
+
     private TextView nameOutput;
-    private Button codeOutput;
+    private Button codeOutputButton;
     private TextView valueOutput;
 
     private int inputOutput=0;
 
-    private BaseAdapter baseAdapter;
+    private DbHelper dbHelper;
 
-    private int positionInput;
-    private int positionOutput;
+    private String codeInput;
+    private String codeOutput;
 
     private boolean isUpdated=false;
 
@@ -72,9 +73,9 @@ public class MainActivity extends AppCompatActivity
     private void exchange(){
      //   boolean execute=false;
         String value="0";
-        double editTextValue;
-        CurrencyDescription currencyDescriptionInput=baseAdapter.getCurrency(positionInput);
-        CurrencyDescription currencyDescriptionOutput=baseAdapter.getCurrency(positionOutput);
+        Double editTextValue;
+        CurrencyDescription currencyDescriptionInput= dbHelper.getCurrency(codeInput);
+        CurrencyDescription currencyDescriptionOutput= dbHelper.getCurrency(codeOutput);
 
 
 
@@ -83,21 +84,21 @@ public class MainActivity extends AppCompatActivity
         try{
             editTextValue=Double.parseDouble(text);
         }catch (Exception e){
-            editTextValue=0.000;
+            editTextValue=0.00;
 
         }
 
-        double x;
+        Double x;
         try {
-            x = currencyDescriptionInput.getAveragePrice()/currencyDescriptionInput.getConversion();
+            x = currencyDescriptionInput.getRate();
         } catch (Exception e) {
-            x=0;
+            x=0.00;
         }
-        double y = 0;
+        Double y = 0.00;
         try {
-            y = currencyDescriptionOutput.getAveragePrice()/currencyDescriptionOutput.getConversion();
+            y = currencyDescriptionOutput.getRate();
         } catch (Exception e) {
-            x=0;
+            x=0.00;
         }
         if (x!=0&&y!=0&&editTextValue!=0) {
             try {
@@ -118,10 +119,10 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences sharedPreference;
 
         nameInput=(TextView) findViewById(R.id.nameInput);
-        codeInput=(Button) findViewById(R.id.codeInput);
+        codeInputButton=(Button) findViewById(R.id.codeInput);
         valueInput=(EditText) findViewById(R.id.valueInput);
         nameOutput=(TextView) findViewById(R.id.nameOutput);
-        codeOutput=(Button) findViewById(R.id.codeOutput);
+        codeOutputButton =(Button) findViewById(R.id.codeOutput);
         valueOutput=(TextView) findViewById(R.id.textViewOutput);
         ImageButton buttonRevert = (ImageButton) findViewById(R.id.buttonRevert);
 
@@ -174,16 +175,17 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        baseAdapter=new BaseAdapter(getApplicationContext());
-        baseAdapter.open();
-        positionInput=2; //pozycja dolara, domyślna
-        positionOutput=36;//pozycja złotówki,domyślna
-        setInput(2);
-        setOutput(36);
+        dbHelper =new DbHelper(getApplicationContext());
+        dbHelper.createDataBase();
+        dbHelper.openDataBase();
+        codeInput ="USD";
+        codeOutput ="PLN";
+       // setInput(2);
+        //setOutput(36);
 
         //lisstenery do obsługi wyboru waluty
 
-        codeInput.setOnClickListener(new View.OnClickListener() {
+        codeInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputOutput = 1;
@@ -192,7 +194,7 @@ public class MainActivity extends AppCompatActivity
 
         });
 
-        codeOutput.setOnClickListener(new View.OnClickListener() {
+        codeOutputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputOutput = 2;
@@ -207,33 +209,31 @@ public class MainActivity extends AppCompatActivity
     }
 
     private  void change() {
-        int change;
-        change=positionInput;
-        positionInput=positionOutput;
-        positionOutput=change;
-        setInput(positionInput);
-        setOutput(positionOutput);
+        String change;
+        change= codeInput;
+        codeInput= codeOutput;
+        codeOutput =change;
+        setInput(codeInput);
+        setOutput(codeOutput);
     }
-    private void setInput(int id){
-        CurrencyDescription currencyDescription;
-        currencyDescription=baseAdapter.getCurrency(id);
+    private void setInput(String code){
+        CurrencyDescription currencyDescription= dbHelper.getCurrency(code);
 
         if (currencyDescription!=null) {
             nameInput.setText(currencyDescription.getName());
-            codeInput.setText((currencyDescription.getCode()));
-            positionInput = id;
+            codeInputButton.setText((currencyDescription.getCode()));
+            codeInput =code;
         }
         exchange();
 
 
     }
-    private void setOutput(int id) {
-        CurrencyDescription currencyDescription;
-        currencyDescription = baseAdapter.getCurrency(id);
+    private void setOutput(String code) {
+        CurrencyDescription currencyDescription= dbHelper.getCurrency(code);
         if (currencyDescription!=null) {
             nameOutput.setText(currencyDescription.getName());
-            codeOutput.setText((currencyDescription.getCode()));
-            positionOutput = id;
+            codeOutputButton.setText((currencyDescription.getCode()));
+            codeOutput=code;
         }
         exchange();
 
@@ -244,15 +244,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected  void onActivityResult(int requestCode,int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        int position;
+        String code;
         try {
-            position = data.getIntExtra("position", 2);
+            code = data.getStringExtra("code");
             if (requestCode == 2 && inputOutput == 1) {
-                setInput(position);
+                setInput(code);
                 inputOutput = 0;
             }
             if (requestCode == 2 && inputOutput == 2) {
-                setOutput(position);
+                setOutput(code);
                 inputOutput = 0;
             }
         }catch (Exception e){

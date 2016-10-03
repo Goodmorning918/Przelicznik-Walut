@@ -24,7 +24,8 @@ public class ListViewAdapter extends ArrayAdapter<CurrencyDescription>{
     static class ViewHolder{
         public TextView name;
         public TextView code;
-        public TextView averagePrice;
+        public TextView country;
+        public TextView rate;
     }
 
     @Override
@@ -35,9 +36,11 @@ public class ListViewAdapter extends ArrayAdapter<CurrencyDescription>{
             LayoutInflater layoutInflater =activity.getLayoutInflater();
             rowView= layoutInflater.inflate(R.layout.currency_item,null,true);
             viewHolder=new ViewHolder();
-            viewHolder.name=(TextView) rowView.findViewById(R.id.name);
-            viewHolder.code=(TextView)rowView.findViewById(R.id.code);
-            viewHolder.averagePrice=(TextView) rowView.findViewById(R.id.averagePrice);
+
+            viewHolder.name=(TextView)    rowView.findViewById(R.id.name);
+            viewHolder.code=(TextView)    rowView.findViewById(R.id.code);
+            viewHolder.country=(TextView) rowView.findViewById(R.id.country);
+            viewHolder.rate =(TextView)   rowView.findViewById(R.id.rate);
             rowView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) rowView.getTag();
@@ -46,7 +49,8 @@ public class ListViewAdapter extends ArrayAdapter<CurrencyDescription>{
 
         viewHolder.name.setText(currencyDescription.getName());
         viewHolder.code.setText(currencyDescription.getCode());
-        viewHolder.averagePrice.setText(Double.toString(currencyDescription.getAveragePrice()/currencyDescription.getConversion()));
+        viewHolder.country.setText(currencyDescription.getCountry());
+        viewHolder.rate.setText(Double.toString(currencyDescription.getRate()));
 
         return  rowView;
     }

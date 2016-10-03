@@ -31,7 +31,7 @@ class Update extends AsyncTask<Void, Void, Void>{
     protected Void doInBackground(Void... params) {
 
 
-        SaveToDatabase saveToDatabase=new SaveToDatabase(context);
+       SaveToDatabase saveToDatabase=new SaveToDatabase(context);
        try {
           saveToDatabase.initial();
           saveToDatabase.check();
