@@ -29,6 +29,8 @@ import static com.dawidcisowski.przelicznikwalut.R.string.navigation_drawer_open
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener{
 
+    SharedPreferences sharedPreference;
+
     private Intent intentListView;
 
     private TextView nameInput;
@@ -178,10 +180,12 @@ public class MainActivity extends AppCompatActivity
         dbHelper =new DbHelper(getApplicationContext());
         dbHelper.createDataBase();
         dbHelper.openDataBase();
-        codeInput ="USD";
-        codeOutput ="PLN";
-       // setInput(2);
-        //setOutput(36);
+
+        //pobranie ostatnio używanych walut
+        codeInput =sharedPreference.getString("codeInput","USD");
+        codeOutput =sharedPreference.getString("codeOutput","PLN");
+        setInput(codeInput);
+        setOutput(codeOutput);
 
         //lisstenery do obsługi wyboru waluty
 
@@ -226,7 +230,6 @@ public class MainActivity extends AppCompatActivity
         }
         exchange();
 
-
     }
     private void setOutput(String code) {
         CurrencyDescription currencyDescription= dbHelper.getCurrency(code);
@@ -236,8 +239,6 @@ public class MainActivity extends AppCompatActivity
             codeOutput=code;
         }
         exchange();
-
-
 
     }
 
@@ -312,5 +313,18 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    //zapisanie ostatnio używanych walut
+    @Override
+    public void onDestroy(){
+        sharedPreference= PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        SharedPreferences.Editor editor= sharedPreference.edit();
+        editor.putString("codeInput",codeInput);
+        editor.putString("codeOutput",codeOutput);
+        editor.commit();
+        super.onDestroy();
     }
 }

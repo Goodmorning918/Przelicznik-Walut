@@ -72,7 +72,7 @@ public class ListViewActivity extends AppCompatActivity {
                 String code = currencyCursor.getString(1);
                 String country = currencyCursor.getString(2);
                 Double rate = currencyCursor.getDouble(3);
-                rate=Double.parseDouble(Count.round(rate,"##.###"));
+                rate=Double.parseDouble(Count.round(rate,".000"));
                 currencyDescriptions.add(new CurrencyDescription(name,code,country,rate));
             } while ((currencyCursor.moveToNext()));
         }
