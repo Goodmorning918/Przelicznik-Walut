@@ -12,7 +12,6 @@ public  class DownloadCode {
         URL url = new URL(urlString);
         InputStream stream;
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setReadTimeout(10000);
         conn.setConnectTimeout(15000);
         conn.setRequestMethod("GET");
         conn.setDoInput(true);

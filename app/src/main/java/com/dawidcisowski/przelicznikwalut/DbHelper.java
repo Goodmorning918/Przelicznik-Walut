@@ -146,6 +146,10 @@ public class DbHelper extends SQLiteOpenHelper {
                return  db.query(TABLE_NAME, columns,null,null,null,null,null);
         }
 
+    public Cursor getAllCurrency(String sort){
+        return  db.query(TABLE_NAME, columns,null,null,null,null,sort);
+    }
+
     public CurrencyDescription getCurrency(String currencyCode){
         Cursor cursor=db.query(TABLE_NAME, columns,KEY_CODE+"='"+currencyCode+"'",null,null,null,null,null);
 
@@ -159,5 +163,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     }
+
 
 }
