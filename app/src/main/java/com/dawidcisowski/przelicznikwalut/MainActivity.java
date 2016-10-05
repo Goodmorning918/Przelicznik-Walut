@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity
         valueOutput=(TextView) findViewById(R.id.textViewOutput);
         ImageButton buttonRevert = (ImageButton) findViewById(R.id.buttonRevert);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -107,9 +107,9 @@ public class DbHelper extends SQLiteOpenHelper {
         db =SQLiteDatabase.openDatabase(myPath,null,SQLiteDatabase.OPEN_READWRITE);
     }
 
-    public long versionBase(){
+   /* public long versionBase(){
         return db.getVersion();
-    }
+    }*/
 
     @Override
     public synchronized  void close (){
@@ -149,6 +149,9 @@ public class DbHelper extends SQLiteOpenHelper {
     public Cursor getAllCurrency(String sort){
         return  db.query(TABLE_NAME, columns,null,null,null,null,sort);
     }
+    public Cursor getAllCurrency(String sort,String search){
+        return  db.query(TABLE_NAME, columns,KEY_CODE+" LIKE '%"+search+"%' OR "+KEY_NAME+" LIKE '%"+search+"%' OR "+KEY_COUNTRY+" LIKE '%"+search+"%' ",null,null,null,sort);
+    }
 
     public CurrencyDescription getCurrency(String currencyCode){
         Cursor cursor=db.query(TABLE_NAME, columns,KEY_CODE+"='"+currencyCode+"'",null,null,null,null,null);
@@ -163,6 +166,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     }
+
 
 
 }

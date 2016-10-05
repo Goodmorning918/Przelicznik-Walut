@@ -28,7 +28,7 @@
 
         android:layout_toLeftOf="@+id/nameSortButton"
         android:layout_toStartOf="@+id/nameSortButton"
-        android:layout_below="@+id/findEditText" />
+        android:layout_below="@+id/searchEditText" />
 
     <Button
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -37,7 +37,7 @@
         android:text="Nazwa"
         android:id="@+id/nameSortButton"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/findEditText" />
+        android:layout_below="@+id/searchEditText" />
 
     <Button
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -48,14 +48,14 @@
         android:layout_toRightOf="@+id/nameSortButton"
         android:layout_alignRight="@+id/listViewCurrency"
         android:layout_alignEnd="@+id/listViewCurrency"
-        android:layout_below="@+id/findEditText" />
+        android:layout_below="@+id/searchEditText" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/findEditText"
+        android:id="@+id/searchEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/countrySortButton"
