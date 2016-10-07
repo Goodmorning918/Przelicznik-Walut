@@ -97,6 +97,16 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return true;
         }
     };
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /**
      * Helper method to determine if the device has an extra-large screen. For
@@ -165,11 +175,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
-          //  actionBar.setDisplayHomeAsUpEnabled(true);
+           actionBar.setDisplayHomeAsUpEnabled(true);
             //actionBar.setHomeButtonEnabled(true);
             //actionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP);
         }
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

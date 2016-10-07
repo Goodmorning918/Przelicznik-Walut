@@ -14,23 +14,24 @@
     android:clickable="true">
 
     <android.support.v7.widget.AppCompatButton
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:text="USD"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/codeInput"
         android:clickable="true"
-        android:layout_alignBottom="@+id/valueInput"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/button"
         android:textIsSelectable="false"
         android:typeface="serif"
-        android:textColor="#040404"
         android:autoText="true"
-        android:maxWidth="20dp"
-        android:layout_alignParentTop="false"
-        android:backgroundTintMode="add" />
+        android:maxWidth="30dp"
+        android:backgroundTintMode="add"
+        android:layout_alignBottom="@+id/valueInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="left"
+        android:textColor="@color/abc_input_method_navigation_guard" />
 
     <android.support.v7.widget.AppCompatEditText
         android:layout_width="wrap_content"
@@ -59,26 +60,28 @@
         android:id="@+id/nameInput"
         android:layout_below="@+id/codeInput"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp" />
 
     <android.support.v7.widget.AppCompatButton
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_height="45dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="PLN"
         android:id="@+id/codeOutput"
-        android:layout_marginTop="10dp"
         android:typeface="serif"
         android:clickable="false"
-        android:layout_below="@+id/buttonRevert"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/codeInput"
         android:layout_alignEnd="@+id/codeInput"
         android:allowUndo="true"
-        android:background="@drawable/button"
         android:textIsSelectable="false"
-        android:textColor="#050505" />
+        android:textColor="#050505"
+        android:layout_below="@+id/buttonRevert"
+        android:gravity="left" />
 
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -86,26 +89,31 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="złoty"
         android:id="@+id/nameOutput"
-        android:layout_below="@+id/textViewOutput"
         android:layout_alignParentLeft="true"
         android:typeface="serif"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/codeOutput" />
 
-    <ImageButton
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="50dp"
+        android:text="Zamień"
         android:layout_height="50dp"
         android:id="@+id/buttonRevert"
-        android:background="@color/colorPrimary"
-        android:src="@android:drawable/stat_notify_sync"
         android:focusable="false"
         android:foregroundGravity="fill_vertical"
         android:scaleType="fitCenter"
         android:typeface="serif"
+        android:layout_below="@+id/nameInput"
+        android:layout_alignRight="@+id/codeOutput"
+        android:layout_alignEnd="@+id/codeOutput"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/nameInput" />
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:layout_width="wrap_content"

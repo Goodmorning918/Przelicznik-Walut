@@ -77,11 +77,10 @@
     <string name="autor">Autor</string>
     <string name="dawidCisowski">Dawid Cisowski</string>
     <string name="email">Email</string>
-    <string name="adresEmail">dawidcisowski@outlok.com</string>
-    <string name="infNbp">Kursy walut aktualizowane za pośrednictwem strony Narodowego Banku Polskieg
-        www.nbp.pl</string>
+    <string name="adresEmail">dawidcisowski@outlook.com</string>
+    <string name="infNbp">Kursy walut aktualizowane za pośrednictwem serwisu Yachoo</string>
     <string name="nbpPage">www.nbp.pl</string>
     <string name="choseCurrency">Wybór Waluty</string>
     <string name="allCurrency">Wszystkie Waluty</string>
-    <string name="version_value">1.1</string>
+    <string name="version_value">2.0</string>
 </resources>

@@ -46,6 +46,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="1.00"
         android:id="@+id/rate"
-        android:gravity="end" />
+        android:gravity="end"
+        android:textColor="@color/bright_foreground_material_light" />
 
 </LinearLayout>
