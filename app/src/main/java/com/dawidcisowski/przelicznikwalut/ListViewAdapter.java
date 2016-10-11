@@ -50,7 +50,9 @@ public class ListViewAdapter extends ArrayAdapter<CurrencyDescription>{
         viewHolder.name.setText(currencyDescription.getName());
         viewHolder.code.setText(currencyDescription.getCode());
         viewHolder.country.setText(currencyDescription.getCountry());
-        viewHolder.rate.setText(Double.toString(currencyDescription.getRate()));
+
+        //zaokrąglenie do 4 miejsc po przecinku
+        viewHolder.rate.setText(String.format("%.4f",currencyDescription.getRate()));
 
         return  rowView;
     }

@@ -41,7 +41,7 @@
         android:id="@+id/valueInput"
         android:typeface="serif"
         android:hint="@string/hint_fild"
-        android:textAlignment="textEnd"
+        android:textAlignment="textStart"
         android:textSize="20dp"
         android:singleLine="false"
         android:password="false"
@@ -98,10 +98,10 @@
         android:paddingTop="5dp"
         android:layout_below="@+id/codeOutput" />
 
-    <Button
+    <android.support.v7.widget.AppCompatImageButton
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="50dp"
-        android:text="Zamień"
+        android:src="@drawable/ic_swap_vert_white_48dp"
         android:layout_height="50dp"
         android:id="@+id/buttonRevert"
         android:focusable="false"

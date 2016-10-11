@@ -81,4 +81,18 @@
         android:text="@string/infNbp"
         android:id="@+id/textView9" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/czas_aktualizacji"
+        android:id="@+id/textView10"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/czasAktualizacji" />
+
 </LinearLayout>

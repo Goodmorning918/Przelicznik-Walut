@@ -133,7 +133,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String code=position.code;
 
         //zaokrąglenie
-        String rate =(Count.round(Double.parseDouble(position.rate),".#####")).replace(',','.');
+        String rate =(Count.round(Double.parseDouble(position.rate),"00.0000")).replace(',','.');
 
         ContentValues contentValues=new ContentValues();
         contentValues.put(KEY_RATE,rate);

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity
     private String codeOutput;
 
     private boolean isUpdated=false;
+
+    private ImageButton buttonRevert;
 
 
     @Override
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity
         nameOutput=(TextView) findViewById(R.id.nameOutput);
         codeOutputButton =(Button) findViewById(R.id.codeOutput);
         valueOutput=(TextView) findViewById(R.id.textViewOutput);
-        Button buttonRevert = (Button) findViewById(R.id.buttonRevert);
+        buttonRevert = (ImageButton) findViewById(R.id.buttonRevert);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

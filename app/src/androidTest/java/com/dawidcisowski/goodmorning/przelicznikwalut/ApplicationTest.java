@@ -5,11 +5,6 @@ import android.test.ApplicationTestCase;
 import android.test.FlakyTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.dawidcisowski.przelicznikwalut.BaseAdapter;
-import com.dawidcisowski.przelicznikwalut.SaveToDatabase;
-
-import dalvik.annotation.TestTarget;
-
 
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {

@@ -16,6 +16,7 @@ public class JsonParser {
              JSONArray jsonArray=new JSONArray(jsonString);
 
 
+
             //szukanie wartości złotówki
             for(int i=0; i<jsonArray.length();i++){
                   String code="";
@@ -32,8 +33,8 @@ public class JsonParser {
             }
 
             for(int i=0; i<jsonArray.length();i++){
-                String code="";
-                String rate="";
+                String code;
+                String rate;
 
                 JSONObject jsonObject=jsonArray.getJSONObject(i);
 

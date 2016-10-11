@@ -1,10 +1,13 @@
 package com.dawidcisowski.przelicznikwalut;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -15,6 +18,14 @@ public class AboutActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+
+        TextView updateTime=(TextView) findViewById(R.id.czasAktualizacji);
+
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        updateTime.setText(sharedPreferences.getString("updateTime",""));
+
+
         if (actionBar != null) {
 
             // Show the Up button in the action bar.

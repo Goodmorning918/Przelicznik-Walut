@@ -85,5 +85,6 @@
     <string name="allCurrency">All Currency</string>
     <string name="version_value">1.1</string>
     <string name="find">Szukaj</string>
+    <string name="czas_aktualizacji">Ostatnia aktualizacja</string>
 
 </resources>
