@@ -1,0 +1,92 @@
+
+<resources>
+    <string name="app_name">Przelicznik Walut</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="hint_fild">"0"</string>
+    <string name="hint_currency">Select Currency</string>
+    <string name="button">Count</string>
+    <string name="przelicznik">Przelicznik</string>
+    <string name="zaktualizuj">Update Now</string>
+    <string name="o_mnie">About Application</string>
+    <string name="action_settings">Setings</string>
+    <string name="kursy_walut">Exchanges Rate</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_sync">Automatic Update</string>
+<string name="pref_description_sync">With start aplication, update exchange
+</string>
+    <string name="toastUpdateTrue">Updates</string>
+    <string name="toastUpdateFalse">non Updates, check internet conection</string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_title_color"> Wybór koloru aplikacji</string>
+    <string-array name="pref_color_list_titles">
+        <item>Czerwony</item>
+        <item>Zielony</item>
+        <item>Niebieski</item>
+    </string-array>
+    <string-array name="pref_color_list_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_about">About Aplication</string>
+    <string name="vesion">Version</string>
+    <string name="autor">Autor</string>
+    <string name="dawidCisowski">Dawid Cisowski</string>
+    <string name="email">Email</string>
+    <string name="adresEmail">dawidcisowski@outlok.com</string>
+    <string name="infNbp">Exchange downloaded wia the web site of National Polisch Bank www.nbp.pl</string>
+    <string name="nbpPage">www.nbp.pl</string>
+    <string name="choseCurrency">Select Currency</string>
+    <string name="allCurrency">All Currency</string>
+    <string name="version_value">1.1</string>
+    <string name="czas_aktualizacji">Last ctualization</string>
+    <string name="mail">dawid.cisowski@outlook.com</string>
+    <string name="find">search</string>
+    <string name="yahoo">Rates downloaded wia the web site of Yahoo</string>
+
+</resources>
